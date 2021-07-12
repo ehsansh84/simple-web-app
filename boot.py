@@ -7,8 +7,6 @@ def home():
     bg = os.getenv('background', 'yellow')
     color = os.getenv('color', 'red')
     text = os.getenv('text', 'This is a sample text')
-    print("========================")
-    print(bg, color, text)
     html = """
     <html>
         <head>
@@ -33,7 +31,6 @@ def json():
             "age": 36
             }
 
-print('WTF?!')
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000)
 
