@@ -5,6 +5,7 @@ metadata:
   namespace: "{{ $.Values.metadata.namespace }}"
   labels:
     app.kubernetes.io/name: {{ $.Values.name }}
+    app: {{ $.Values.name }}
 spec:
   selector:
     matchLabels:
@@ -17,7 +18,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ $.Values.name }}
-        helm.sh/chart: wordpress-12.1.23
+        app: {{ $.Values.name }}
         app.kubernetes.io/instance: {{ $.Values.name }}
         app.kubernetes.io/managed-by: Helm
     spec:
