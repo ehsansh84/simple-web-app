@@ -1,0 +1,17 @@
+name: web1
+replica: 1
+image:
+  name: shirzadi/simple-web-app
+  tag: latest
+metadata:
+  namespace: swapp
+env:
+  - name: background
+    value: "purple"
+  - name: color
+    value: "yellow"
+  - name: text
+    value: "Hello world"
+service:
+  port: 8000
+  type: ClusterIP
