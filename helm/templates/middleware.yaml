@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  redirectScheme:
+    permanent: true
+    port: '443'
+    scheme: https

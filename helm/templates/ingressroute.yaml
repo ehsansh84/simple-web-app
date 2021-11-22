@@ -4,8 +4,30 @@ metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.metadata.namespace }}
 spec:
+  entryPoints:
+    - websecure
   routes:
   - match: Host(`swapp.devserver.ir`)
+    kind: Rule
+    services:
+      - name: {{ $.Values.name }}
+        namespace: {{ .Values.metadata.namespace }}
+        port: {{ .Values.service.port }}
+  tls:
+    secretName: swapp-tls
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.name }}-http
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`swapp.devserver.ir`)
+    middlewares:
+      - name: redirect-https
     kind: Rule
     services:
       - name: {{ $.Values.name }}
