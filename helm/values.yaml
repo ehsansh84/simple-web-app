@@ -1,10 +1,10 @@
-name: web1
+name: web2
 replica: 1
 image:
   name: shirzadi/simple-web-app
   tag: latest
 metadata:
-  namespace: swapp
+  namespace: swapp2
 env:
   - name: background
     value: "purple"
@@ -15,3 +15,5 @@ env:
 service:
   port: 8000
   type: ClusterIP
+ingress:
+  host: "swapp2.devserver.ir"
