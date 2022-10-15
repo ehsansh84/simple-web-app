@@ -20,9 +20,11 @@ def home():
     """
     return html % (bg, color, text)
 
+
 @app.route("/test")
 def test():
     return "This is a test"
+
 
 @app.route("/json")
 def json():
@@ -30,6 +32,7 @@ def json():
             "name": "ehsan",
             "age": 36
             }
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000)
