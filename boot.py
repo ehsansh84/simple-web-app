@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import os
 app = Flask(__name__)
 
@@ -32,6 +32,24 @@ def json():
             "name": "ehsan",
             "age": 36
             }
+
+
+@app.route("/auth", methods=['POST'])
+def auth():
+    # content = request.get_json(silent=True)
+    params = request.get_json()
+    username = params['username']
+    password = params['password']
+    if username == 'admin' and password == '123':
+        return jsonify(isError=False,
+                       message="Success",
+                       statusCode=200,
+                       data={}), 200
+    else:
+        return jsonify(isError=True,
+                       message="Failed",
+                       statusCode=401,
+                       data={}), 401
 
 
 if __name__ == "__main__":
